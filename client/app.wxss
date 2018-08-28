@@ -1,0 +1,468 @@
+/**app.wxss**/
+.container {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+page {
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+button,
+view {
+  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  border:none;
+  border-radius: 0rpx;
+  outline: none;
+  background-color: rgba(255, 255, 255, 255);
+}
+
+
+button::after{
+  border: none;
+}
+image {
+  height: auto;
+  display: block;
+}
+
+.bottom-btn-holder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 40rpx 0;
+  z-index: 2;
+  /* border-top: 1px solid rgb(229, 229, 229) */
+}
+.btn {
+  height: 94rpx;
+  line-height: 94rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+}
+.btn::after{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.btn.little{
+  width: 210rpx;
+  margin: 10rpx;
+}
+
+.btn.little.gray{
+  background-color: rgb(248, 248, 248);
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  color: rgb(0, 0, 0);
+}
+
+.btn.little.blue{
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  color: rgb(255, 255, 255);
+}
+
+.half-btn{
+  width: 320rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  display: inline-block;
+  margin: 0 15rpx ;
+}
+
+.half-btn.gray{
+  background-color: rgb(248, 248, 248);
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: 10rpx;
+  color: rgb(0, 0, 0);
+}
+
+@font-face {font-family: "font_family";
+  src: url('https://www.facecardpro.com/public/wximg/font/iconfont.eot?t=1531902489538'); /* IE9*/
+  src: url('https://www.facecardpro.com/public/wximg/font/iconfont.eot?t=1531902489538#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+  url('https://www.facecardpro.com/public/wximg/font/iconfont.ttf?t=1531902489538') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('https://www.facecardpro.com/public/wximg/font/iconfont.svg?t=1531902489538#font_family') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"font_family" !important;
+  font-size:48rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-collection:before { content: "\e601"; }
+
+.icon-face:before { content: "\e602"; }
+
+
+.half-btn.blue{
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: 10rpx;
+  color: rgb(255, 255, 255);
+}
+.whole-btn {
+  width: 670rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  display: inline-block;
+}
+
+.whole-btn.blue{
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: 5rpx;
+  color: rgb(255, 255, 255);
+}
+.list{
+  margin-bottom: 210rpx;
+}
+
+.list .item {
+  width: 100%;
+  height: 120rpx;
+  display: block;
+  position: relative;
+}
+
+.list .title {
+  width: 100%;
+  height: 86rpx;
+  display: block;
+  position: relative;
+  border-top: 1px solid rgb(229, 229, 229);
+}
+
+.list .title .main{
+  position: absolute;
+  width: 720rpx;
+  left: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+  margin-left: 30rpx;
+  box-sizing: border-box;
+  text-align: left;
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.list .title .main .name {
+  display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 26rpx;
+  width: auto;
+  color: rgb(153, 153, 153);
+}
+
+.list .item .main{
+  position: absolute;
+  width: 721rpx;
+  left: 0;
+  height: 120rpx;
+  line-height: 120rpx;
+  margin-left: 30rpx;
+  box-sizing: border-box;
+  text-align: left;
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.list .item .btn {
+  position: absolute;
+  font-size: 34rpx;
+  width: 181rpx;
+  line-height: 120rpx;
+  height: 120rpx;
+  right: 0;
+  top: 0;
+  background-color: rgb(230, 67, 64);
+  border-radius: 0;
+  color: rgb(255, 255, 255);
+}
+
+.list .item .main .avatar {
+  display: inline-block;
+  margin-right: 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 90rpx;
+  vertical-align: middle;
+}
+
+.list .item .main .avatar image{
+  width: 100%;
+  height: 100%;
+}
+
+.list .item .main .name {
+  display: inline-block;
+  height: 34rpx;
+  line-height: 34rpx;
+  width: auto;
+}
+
+.list .item .main .detail {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 119rpx;
+  line-height: 119rpx;
+  width: auto;
+  text-align: right;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.list .item .main .detail text{
+  display: inline-block;
+  margin-right: 30rpx;
+}
+
+.ft-1{
+  color: rgb(136, 136, 136);
+  font-size: 34rpx;
+}
+
+.ft-2{
+  color: rgb(0, 0, 0);
+  font-size: 34rpx;
+}
+
+.list .item .main .detail .image-holder{
+  display: inline-block;
+  margin-right: 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 90rpx;
+  vertical-align: middle;
+}
+
+.image-holder image {
+  width: 100%;
+  height: 100%;
+}
+
+.list .item .left-holder{
+  position: absolute;
+  left: 60px;
+  top: 0;
+  height: 119rpx;
+  line-height: 119rpx;
+  width: auto;
+}
+
+.list .item .left-holder .up{
+  position: absolute;
+  top: 8rpx;
+  width: 500rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 34rpx;
+  color: rgb(0, 0, 0);
+  text-align: left;
+}
+
+.list .item .left-holder .up text{
+  height: 48rpx;
+  font-size: 34rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.list .item .left-holder .up image{
+  height: 37rpx;
+  width: 100rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20rpx;
+}
+
+.list .item .left-holder .up image.large{
+  width: 126rpx;
+}
+
+.list .item .left-holder .down{
+  position: absolute;
+  bottom: 14rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 26rpx;
+  color: rgb(0, 0, 0);
+  width: 300rpx;
+  text-align: left;
+}
+
+.list .item .left-holder .down image {
+  height: 26rpx;
+  line-height: 26rpx;
+  width: 18rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.list .item .left-holder .down text {
+  height: 26rpx;
+  line-height: 26rpx;
+  color: rgb(153, 153, 153);
+  width:270rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.list .item .right-holder{
+  position: absolute;
+  right: 30px;
+  top: 0;
+  height: 118rpx;
+  line-height: 118rpx;
+  width: 300rpx;
+  text-align: right;
+}
+
+.list .item .right-holder .up{
+  position: absolute;
+  top: 18rpx;
+  right: 0;
+  width: 300rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 26rpx;
+  color: rgb(153,153,153);
+  text-align: right;
+}
+
+.list .item .right-holder .down{
+  position: absolute;
+  bottom: 14rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 26rpx;
+  color: rgb(0,0,0);
+  width: 300rpx;
+  text-align: right;
+}
+
+.list .item .right-holder .down text {
+  height: 26rpx;
+  line-height: 26rpx;
+  color: rgb(0,0,0);
+  width: 200rpx;
+  margin-left: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.list .item .right-arrow {
+  width: 16rpx;
+  height: 26rpx;
+  display: inline-block;
+  line-height: 119rpx;
+  vertical-align: middle;
+  margin-right: 30rpx;
+}
+
+.list .item .main .image-left-holder{
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+
+.list .item .image-left-holder image{
+  width: 100%;
+  height: 100%;
+}
+
+.list .more {
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
+}
+
+.list .more .btn{
+  width: 320rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  background-color: rgb(248, 248, 248);
+}
+
+.list .more .btn image{
+  position: absolute;
+  height: 24rpx;
+  width: 25rpx;
+  left: 70rpx;
+  top: 18rpx;
+}
+
+.weui-loading {
+  margin: 0 5px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: weuiLoading 1s steps(12, end) infinite;
+  animation: weuiLoading 1s steps(12, end) infinite;
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
+  background-size: 100%;
+}
+.weui-loadmore {
+  width: 65%;
+  margin: 1.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+.weui-loadmore__tips {
+  display: inline-block;
+  vertical-align: middle;
+}
+.right-part{
+  float: right;
+  margin-right: 30rpx;
+}
+.canvas-holder{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+/* .canvas-holder.show{
+  z-index: 1000;
+} */
+
+
+/* .canvas-holder.hidden{
+  z-index: -1;
+} */
+
+#myCanvas{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: white;
+}

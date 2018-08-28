@@ -1,0 +1,117 @@
+<!--index.wxml-->
+<view class="container" id='main'>
+  <!-- 用户登录测试 -->
+  <view class='cover' wx:if="{{!resultFlag}}" animation="{{coverAnimation}}">
+
+  </view>
+  <view wx:if="{{!retryFlag}}" class='ani-holder'>
+    <view class="pic-holder" animation="{{animationPicData}}">
+      <view class='image-holder'>
+        <image wx:if="{{tempPhotoPath}}" src="{{tempPhotoPath}}" mode='aspectFill' data-list="{{[(faceCard.facePhoto)]}}" data-src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}" bindtap="imgPreview"></image>
+      </view>
+      <view class='list-Holder' animation="{{animationData}}">
+        <view class='image-holder' wx:for="{{refImgList}}" wx:key="index" wx:for-item="item">
+          <image wx:if="{{refImgList}}" src="{{'https://www.facecardpro.com' + item.src}}" data-list="{{[(item.src)]}}" data-src="{{'https://www.facecardpro.com' + item.src}}" mode='aspectFill' bindtap="imgPreview"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{retryFlag}}" class='ani-holder retry'>
+    <view class="pic-holder" animation="{{animationPicData}}">
+      <view class='image-holder'>
+        <image wx:if="{{tempPhotoPath}}" src="{{tempPhotoPath}}" mode='aspectFill' data-list="{{[(faceCard.facePhoto)]}}" data-src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}" bindtap="imgPreview"></image>
+      </view>
+      <view class='list-Holder' animation="{{animationData}}">
+        <view class='image-holder' wx:for="{{refImgList}}" wx:key="index" wx:for-item="item">
+          <image wx:if="{{refImgList}}" src="{{'https://www.facecardpro.com' + item.src}}" data-id="{{item.id}}" data-src="{{'https://www.facecardpro.com' + item.src}}" mode='aspectFill' bindtap="photoClick"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='validHolder'>
+    <image class='validIcon' src='https://www.facecardpro.com/public/wximg/avatar1.png'></image>
+    <view class='validText'>
+      <view>
+        经过阿发确认，与您最相似的{{retryFlag?'脸卡':'明星'}}
+        <text>\n{{retryFlag?'':'竟然'}}是 </text>
+        <text wx:if="{{refImgList[index].name}}">{{refImgList[index].name}}!!!</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='list'>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>您的脸型属于  </text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='square'}}">正方形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='triangle'}}">三角形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='oval'}}">椭圆形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='heart'}}">心形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='round'}}">圆形</text>
+
+        <view class='image-left-holder'>
+          <image class='icon' wx:if="{{faceCard.face_shape=='square'}}" src="https://www.facecardpro.com/public/wximg/square.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='triangle'}}" src="https://www.facecardpro.com/public/wximg/triangle.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='oval'}}" src="https://www.facecardpro.com/public/wximg/oval.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='heart'}}" src="https://www.facecardpro.com/public/wximg/heart.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='round'}}" src="https://www.facecardpro.com/public/wximg/round.png"></image>
+        </view>
+
+        <!-- <view class='detail' >
+          <view class='right-holder' style='right: 0;'>
+            <text class='up'>{{faceCard.clickNum}} 看过</text>
+            <view class='down'>
+              <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
+              <text>{{faceCard.likeNum}} 收藏</text>
+            </view>
+          </view>
+        </view> -->
+      </view>
+    </view>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>这些发型看来都很适合您</text>
+        <view class='detail'>
+          <view wx:if="{{!retryFlag}}"  class='image-holder' wx:for="{{faceCard.recommendPic}}" wx:item="{{item}}" wx:key="{{index}}">
+            <image mode='aspectFill' bindtap="imgPreview" src="{{'https://www.facecardpro.com' + item}}" data-list="{{faceCard.recommendPic}}" data-src="{{'https://www.facecardpro.com' + item}}"></image>
+          </view>
+
+          <view wx:if="{{retryFlag}}"  class='image-holder' wx:for="{{faceCard.recommendPic}}" wx:item="{{item}}" wx:key="{{index}}">
+            <image mode='aspectFill' bindtap="photoClickItem" src="{{'https://www.facecardpro.com' + item}}" data-index="{{index}}" data-src="{{'https://www.facecardpro.com' + item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>有 </text>
+        <text class='ft-1'>{{faceCard.clickNum}}</text>
+        <text class='ft-1'> 人看过这张脸卡哦</text>
+      </view>
+    </view> -->
+  </view>
+
+  <!-- <view class='bottom-btn-holder'>
+    <button class='whole-btn blue' open-type='share'>分享出去吧</button>
+  </view> -->
+
+  <view class='bottom-btn-holder'>
+    <button wx:if="{{retryFlag}}" class='half-btn gray' bindtap='retry'>换一张</button>
+    <button wx:if="{{retryFlag&&!collectedFlag}}" class='btn half-btn blue' bindtap="doCollection">收藏推荐卡片</button>
+    <button wx:if="{{retryFlag&&collectedFlag}}" class='btn half-btn gray' bindtap='deleteCollection'>取消收藏卡片</button>
+
+
+    <button wx:if="{{!retryFlag}}" class='btn little gray' open-type='share'>分享</button>
+    <button wx:if="{{!retryFlag}}" class='btn little gray' bindtap='retry'>换一张</button>
+
+    <button wx:if="{{!retryFlag}}" class='btn little blue' bindtap='drawQrcode'>朋友圈</button>
+    <!-- <button wx:if="{{!retryFlag}}" class='whole-btn blue' open-type='share'>分享出去吧</button> -->
+  </view>
+  <view class="canvas-holder" hidden="{{!shareQrFlag}}" id='canvas-holder'>
+    <canvas class='canvas' canvas-id="myCanvas" id='myCanvas' />
+  </view>
+
+</view>

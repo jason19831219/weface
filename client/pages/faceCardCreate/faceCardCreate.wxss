@@ -1,0 +1,151 @@
+/* pages/faceCardCreate/faceCardCreate.wxss */
+.ani-holder{
+  position: relative;
+  width: 750rpx;
+  height: 562.5rpx;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.pic-holder{
+  position: absolute;
+  z-index: 99;
+  width: 750rpx;
+  height: 562.5rpx;
+  top: 375rpx;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.image-holder{
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+.pic-holder .image-holder{
+  width: 375rpx;
+  height: 100%;
+}
+
+.pic-holder .list-Holder{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 375rpx;
+  height: 562.5rpx;
+  font-size: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.list-Holder .image-holder {
+  width: 375rpx;
+  height: 100%;
+}
+
+.image-holder image{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+.validHolder {
+  position: relative;
+  width: 100%;
+  height: 228rpx;
+  line-height: 228rpx;
+  border-bottom: 1rpx solid rgb(229, 229, 229);
+}
+
+.validHolder .validIcon{
+  position: absolute;
+  width: 68rpx;
+  height: 80rpx;
+  top: 74rpx;
+  left: 40rpx;
+}
+
+.validHolder .validText{
+  position: absolute;
+  width: 550rpx;
+  height: 148rpx;
+  top: 40rpx;
+  right: 50rpx;
+  vertical-align: middle;
+}
+
+.validHolder .validText view{
+  position: absolute;
+  top: 0;
+  background-color: rgb(229, 230, 234);
+  line-height: 50rpx;
+  height: 108rpx;
+  font-size: 32rpx;
+  display: inline-block;
+  border-radius: 20rpx;
+  padding: 24rpx 20rpx;
+
+}
+
+.validHolder .validText text{
+  font-size: 40rpx;
+}
+
+.list-holder{
+  width: 100%;
+  border-top: 1rpx solid rgb(229, 229, 229);
+}
+.list-item{
+  width: 100%;
+  height: 117rpx;
+  line-height: 117rpx;
+  border-bottom: 1rpx solid rgb(229, 229, 229);
+}
+
+.list-item text{
+  font-size: 30rpx;
+  color: rgb(136, 136, 136);
+  margin-left: 40rpx;
+  margin-right: 88rpx;
+}
+.list-item .name{
+  margin-right: 0;
+}
+.list-item .param{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.list-item .icon {
+  display: inline-block;
+  height: 58rpx;
+  width: 58rpx;
+  vertical-align: middle;
+  float: right;
+  margin-top: 31rpx;
+  margin-right: 36rpx;
+}
+.list-item .image-holder{
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 36rpx;
+  float: right;
+  margin-top: 30rpx;
+}
+
+.list-item .image-holder image{
+  width: 100%;
+  height: 100%;
+}
+
+.cover {
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  background-color: black;
+}

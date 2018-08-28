@@ -1,0 +1,46 @@
+<view class="container">
+  <view class='list'>
+    <view class='title'>
+      <view class='main'>
+        <text class='ft-1'>我的收藏</text><text class='ft-1 right-part'>{{pageInfo.totalItems}}/50</text>
+      </view>
+    </view>
+    <view class='vector-holer' wx:if="{{!pageInfo.totalItems}}">
+      <image src='https://www.facecardpro.com/public/wximg/vector.png'></image>
+      <text>快来建立您的第一张脸卡吧！</text>
+    </view>
+
+    <view class='item' wx:for="{{faceCardList}}" wx:item="{{item}}" wx:key="{{index}}" wx:if="{{item.faceCard.facePhoto}}">
+      <button class='btn' data-id="{{item._id}}" bindtap='deleteItem'>删除</button>
+      <view class='main' style='left: {{item.style}}' data-index="{{index}}" bindtouchstart="fciTouchS" bindtouchmove="fciTouchM" bindtouchend="fciTouchE" bindtap='itemTap'>
+        <view class='avatar'>
+          <image mode='aspectFill' src="{{'https://www.facecardpro.com' + item.faceCard.facePhoto}}"></image>
+        </view>
+        <view class='left-holder'>
+          <view class='up'><text>{{item.faceCard.createDate}}</text><image wx:if='{{item.faceCard.isRemove}}' src='https://www.facecardpro.com/public/wximg/out.png'></image></view>
+          <view class='down'>
+            <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
+            <text wx:if="{{item.faceCard.city}}">{{item.faceCard.city}},{{item.faceCard.district}}</text>
+          </view>
+        </view>
+        <image class='right-arrow' src='https://www.facecardpro.com/public/wximg/arrow.png'></image>
+        <view class='detail'>
+          <view class='right-holder'>
+            <text class='up'>{{item.faceCard.clickNum}} 看过</text>
+            <view class='down'>{{item.faceCard.likeNum}} 收藏</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='more' wx:if="{{pageInfo.totalItems>pageNumber*10}}">
+      <button class='btn' bindtap='getMore' >
+      <image src='https://www.facecardpro.com/public/wximg/loading.png'></image>
+      查看更多
+      </button>
+    </view> -->
+  </view>
+  <view class="weui-loadmore" wx:if="{{pageInfo.totalItems>pageInfo.pageNumber*pageInfo.pageSize}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view>

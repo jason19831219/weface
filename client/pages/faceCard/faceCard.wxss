@@ -1,0 +1,209 @@
+/* pages/faceCard/faceCard.wxss */
+.picHolder{
+  position: relative;
+  width: 750rpx;
+  height: 750rpx;
+  overflow: hidden;
+}
+
+.photoHolder.face{
+  position: absolute;
+  width: 500rpx;
+  height: 750rpx;
+}
+
+.photoHolder.side{
+  position: absolute;
+  width: 250rpx;
+  height: 375rpx;
+  right: 0;
+  top: 0;
+}
+
+.photoHolder.back{
+  position: absolute;
+  width: 250rpx;
+  height: 375rpx;
+  right: 0;
+  bottom: 0;
+}
+
+.photoHolder .add-icon{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  left: 50%;
+  top: 120rpx;
+  margin-left: -30rpx;
+}
+
+.photoHolder .side-icon{
+  position: absolute;
+  width: 60rpx;
+  height: 70rpx;
+  left: 50%;
+  top: 120rpx;
+  margin-left: -30rpx;
+}
+
+
+
+.photoHolder text{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 450rpx;
+  font-size: 28rpx;
+  color: rgb(136, 136, 136);
+  text-align: center;
+  display: block;
+  box-sizing:border-box;
+  border-bottom: 1rpx solid rgb(229, 229, 229);
+}
+
+.photoHolder image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.list-holder{
+  width: 100%;
+  margin-bottom: 220rpx;
+}
+.list-item{
+  width: 100%;
+  height: 117rpx;
+  line-height: 117rpx;
+  border-bottom: 1rpx solid rgb(229, 229, 229);
+}
+
+.list-item text{
+  font-size: 30rpx;
+  color: rgb(136, 136, 136);
+  margin-left: 40rpx;
+  margin-right: 88rpx;
+}
+.list-item .image-holder{
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 36rpx;
+}
+
+.list-item .image-holder image{
+  width: 100%;
+  height: 100%;
+}
+
+.list-item .param{
+  display: inline-block;
+  float: right;
+  margin-right: 40rpx;
+}
+
+.list-item.edit{
+  margin-left: 40rpx;
+  width: auto;
+  height: auto;
+  border-bottom: 0;
+}
+
+.list-item.edit .icon{
+  width: 58rpx;
+  height: 58rpx;
+  margin-right: 0;
+   margin-left: 0rpx;
+   display: inline-block;
+   vertical-align:middle;
+}
+
+.list-item.edit text{
+  height: 58rpx;
+  margin-right: 0;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+}
+
+.list-item.edit .radio-list{
+  line-height: 117rpx;
+  height: 117rpx;
+  border-bottom: 1rpx solid rgb(229, 229, 229);
+}
+
+.list-item.edit radio{
+  float: right;
+  margin-right: 40rpx;
+}
+
+.edit-item{
+  margin-top: 26rpx;
+}
+.edit-item .title{
+  font-size: 24rpx;
+  color: rgb(136, 136, 136);
+  height: 62rpx;
+  line-height: 62rpx;
+  margin-left: 40rpx;
+}
+.edit-item .radio-group,
+.edit-item checkbox-group{
+  display: block;
+  margin-left: 40rpx;
+}
+.edit-item .radio-group .lable{
+  width: 222rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  background-color: white;
+  box-sizing: border-box;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  border: 1rpx solid rgb(0, 0, 0);
+  font-size: 28rpx;
+}
+
+.edit-item .radio-group .lable.left{
+  border-right: 0rpx;
+  border-top-left-radius: 5rpx;
+  border-bottom-left-radius: 5rpx;
+}
+
+.edit-item .radio-group .lable.right{
+  border-left: 0rpx;
+  border-top-right-radius: 5rpx;
+  border-bottom-right-radius: 5rpx;
+}
+
+.edit-item .radio-group .lable.checked{
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.edit-item lable text{
+  font-size: 28rpx;
+  line-height: 58rpx;
+}
+
+.edit-item checkbox-group{
+  margin-top: 60rpx;
+}
+
+.edit-item checkbox-group label{
+  font-size: 28rpx;
+  line-height: 88rpx;
+  color: rgb(136, 136, 136);
+}
+
+
+.upload-btn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+

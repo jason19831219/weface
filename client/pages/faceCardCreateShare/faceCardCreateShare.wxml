@@ -1,0 +1,82 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 用户登录测试 -->
+  <view class="picHolder">
+    <view class='photo'>
+      <image wx:if="{{faceCard.facePhoto}}" class="photo userPhoto" src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}" data-list="{{[(faceCard.facePhoto)]}}" data-src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}" mode='aspectFill' bindtap="imgPreview"></image>
+    </view>
+
+    <view class='refImgHolder'>
+      <image wx:if="{{faceCard.star.src}}" src="{{'https://www.facecardpro.com' + faceCard.star.src}}" data-list="{{[(faceCard.star.src)]}}" data-src="{{'https://www.facecardpro.com' + faceCard.star.src}}" mode='aspectFill' bindtap="imgPreview"></image>
+    </view>
+  </view>
+  <view class='cover'>
+  </view>
+  <view class='validHolder'>
+    <image class='validIcon' src='https://www.facecardpro.com/public/wximg/avatar1.png'></image>
+    <view class='validText'>
+      <view>
+        经过阿发确认，与您最相似的明星竟然是
+        <text wx:if="{{faceCard.star.name}}">{{faceCard.star.name}}!!!</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>您的脸型属于  </text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='square'}}">正方形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='triangle'}}">三角形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='oval'}}">椭圆形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='heart'}}">心形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='round'}}">圆形</text>
+
+        <view class='image-left-holder'>
+          <image class='icon' wx:if="{{faceCard.face_shape=='square'}}" src="https://www.facecardpro.com/public/wximg/square.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='triangle'}}" src="https://www.facecardpro.com/public/wximg/triangle.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='oval'}}" src="https://www.facecardpro.com/public/wximg/oval.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='heart'}}" src="https://www.facecardpro.com/public/wximg/heart.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='round'}}" src="https://www.facecardpro.com/public/wximg/round.png"></image>
+        </view>
+
+        <view class='detail' >
+          <view class='right-holder' style='right: 0;'>
+            <text class='up'>{{faceCard.clickNum}} 看过</text>
+            <view class='down'>
+              <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
+              <text>{{faceCard.likeNum}} 收藏</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>这些发型看来都很适合您</text>
+        <view class='detail'>
+          <view class='image-holder' wx:for="{{faceCard.recommendPic}}" wx:item="{{item}}" wx:key="{{index}}">
+            <image mode='aspectFill' bindtap="imgPreview" src="{{'https://www.facecardpro.com' + item}}" data-list="{{faceCard.recommendPic}}" data-src="{{'https://www.facecardpro.com' + item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>有 </text>
+        <text class='ft-1'>{{faceCard.clickNum}}</text>
+        <text class='ft-1'> 人看过这张脸卡哦</text>
+      </view>
+    </view> -->
+  </view>
+
+  <view class='bottom-btn-holder'>
+    <!-- <button class='btn little gray' bindtap='goBack'>我也试试</button> -->
+    <button wx:if="{{!collectedFlag}}" class='btn little gray' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">收藏</button>
+    <button wx:if="{{collectedFlag}}" class='btn little gray' bindtap='deleteCollection'>取消收藏</button>
+    <button class='btn little gray' open-type='share'>分享</button>
+    <button class='btn little blue' bindtap='goBack'>我也试试</button>
+  </view>
+
+
+</view>

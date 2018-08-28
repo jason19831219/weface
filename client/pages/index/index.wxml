@@ -1,0 +1,69 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 用户登录测试 -->
+
+  <view class='btns-list-holder'>
+    <view class='btn-holder upload'>
+      <span></span>
+      <text>建立脸卡</text>
+      <button class='upload' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+    </view>
+
+
+    <!-- <view class='btn-holder recommond'>
+      <span></span>
+      <text>再次比对</text>
+      <button bindtap='retry'></button>
+    </view> -->
+
+    <view class='btn-holder recommond'>
+      <span></span>
+      <text>看看推荐</text>
+      <button bindtap='retry'></button>
+    </view>
+  </view>
+  <view class='vector-holer' wx:if="{{!pageInfo.totalItems}}">
+      <image src='https://www.facecardpro.com/public/wximg/vector.png'></image>
+      <text>快来建立您的第一张脸卡吧！</text>
+    </view>
+  <view class='list' wx:if="{{pageInfo.totalItems}}">
+    <view class='title'>
+      <view class='main'>
+        <text class='ft-1'>我的脸卡</text><text class='ft-1 right-part'>{{pageInfo.totalItems}}/50</text>
+      </view>
+    </view>
+    
+    <view class='item' wx:for="{{faceCardList}}" wx:item="{{item}}" wx:key="{{index}}" wx:if="{{item.facePhoto}}">
+      <button class='btn' data-id="{{item._id}}" bindtap='deleteItem'>删除</button>
+      <view class='main' style='left: {{item.style}}' data-index="{{index}}" bindtouchstart="fciTouchS" bindtouchmove="fciTouchM" bindtouchend="fciTouchE" bindtap='itemTap'>
+        <view class='avatar'>
+          <image mode='aspectFill' src="{{'https://www.facecardpro.com' + item.facePhoto}}"></image>
+        </view>
+        <view class='left-holder'>
+          <view class='up'><text>{{item.createDate}}</text><image class='large' wx:if='{{item.isTop}}' src='https://www.facecardpro.com/public/wximg/recommended.png'></image></view>
+          <view class='down'>
+            <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
+            <text wx:if="{{item.city}}">{{item.city}},{{item.district}}</text>
+          </view>
+        </view>
+        <image class='right-arrow' src='https://www.facecardpro.com/public/wximg/arrow.png'></image>
+        <view class='detail'>
+          <view class='right-holder'>
+            <text class='up'>{{item.clickNum}} 看过</text>
+            <text class='down'>{{item.likeNum}} 收藏</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='more' wx:if="{{pageInfo.totalItems>pageNumber*10}}">
+      <button class='btn' bindtap='getMore'>
+      <image src='https://www.facecardpro.com/public/wximg/loading.png'></image>
+      查看更多
+      </button>
+    </view> -->
+  </view>
+  <view class="weui-loadmore" wx:if="{{pageInfo.totalItems>pageInfo.pageNumber*pageInfo.pageSize}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+</view>

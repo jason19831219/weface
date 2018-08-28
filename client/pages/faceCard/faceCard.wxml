@@ -1,0 +1,217 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 用户登录测试 -->
+  <view class="picHolder">
+    <view class='face photoHolder'>
+      <!-- <text wx:if="{{!faceCard.facePhoto}}" class='uploadBtn'>添加正面</text> -->
+      <image wx:if="{{faceCard.facePhoto}}" class="photo userPhoto" src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}" mode='aspectFill' data-list="{{[(faceCard.facePhoto), faceCard.sidePhoto, faceCard.backPhoto]}}" data-src="{{'https://www.facecardpro.com' + faceCard.facePhoto}}"
+        bindtap="imgPreview"></image>
+      <!-- <button wx:if="{{editFlag}}" data-target='facePhoto' class='upload-btn' bindtap='uploadImg'></button> -->
+    </view>
+    <view class='side photoHolder'>
+      <image class='side-icon' wx:if="{{!editFlag}}" src='https://www.facecardpro.com/public/wximg/otherside.png'></image>
+      <image class='add-icon' wx:if="{{editFlag}}" src='https://www.facecardpro.com/public/wximg/add.png'></image>
+      <text wx:if="{{!faceCard.sidePhoto}}" class='uploadBtn'>添加侧面</text>
+      <image wx:if="{{faceCard.sidePhoto}}" class="photo userPhoto" src="{{'https://www.facecardpro.com' + faceCard.sidePhoto}}" mode='aspectFill' data-list="{{[(faceCard.facePhoto), faceCard.sidePhoto, faceCard.backPhoto]}}" data-src="{{'https://www.facecardpro.com' + faceCard.sidePhoto}}"
+        bindtap="imgPreview"></image>
+      <button wx:if="{{editFlag}}" data-target='sidePhoto' class='upload-btn' bindtap='uploadImg'></button>
+    </view>
+    <view class='back photoHolder'>
+      <image class='side-icon' wx:if="{{!editFlag}}" src='https://www.facecardpro.com/public/wximg/backside.png'></image>
+      <image class='add-icon' wx:if="{{editFlag}}" src='https://www.facecardpro.com/public/wximg/add.png'></image>
+      <text wx:if="{{!faceCard.backPhoto}}" class='uploadBtn'>添加背面</text>
+      <image wx:if="{{faceCard.backPhoto}}" class="photo userPhoto" src="{{'https://www.facecardpro.com' + faceCard.backPhoto}}" mode='aspectFill' data-list="{{[(faceCard.facePhoto), faceCard.sidePhoto, faceCard.backPhoto]}}" data-src="{{'https://www.facecardpro.com' + faceCard.backPhoto}}"
+        bindtap="imgPreview"></image>
+      <button wx:if="{{editFlag}}" data-target='backPhoto' class='upload-btn' bindtap='uploadImg'></button>
+    </view>
+  </view>
+
+  <view wx:if="{{!editFlag}}" class='list'>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-1'>您的脸型属于  </text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='square'}}">正方形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='triangle'}}">三角形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='oval'}}">椭圆形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='heart'}}">心形</text>
+        <text class='ft-1' wx:if="{{faceCard.face_shape=='round'}}">圆形</text>
+
+        <view class='image-left-holder'>
+          <image class='icon' wx:if="{{faceCard.face_shape=='square'}}" src="https://www.facecardpro.com/public/wximg/square.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='triangle'}}" src="https://www.facecardpro.com/public/wximg/triangle.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='oval'}}" src="https://www.facecardpro.com/public/wximg/oval.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='heart'}}" src="https://www.facecardpro.com/public/wximg/heart.png"></image>
+          <image class='icon' wx:if="{{faceCard.face_shape=='round'}}" src="https://www.facecardpro.com/public/wximg/round.png"></image>
+        </view>
+
+        <view class='detail'>
+          <view class='right-holder' style='right: 0;'>
+            <text class='up'>{{faceCard.clickNum}} 看过</text>
+            <view class='down'>
+              <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
+              <text>{{faceCard.likeNum}} 收藏</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item' style='border-top: 0rpx;'>
+      <view class='main'>
+        <text class='ft-1'>这些发型看来都很适合您</text>
+        <view class='detail'>
+          <view class='image-holder' wx:for="{{faceCard.recommendPic}}" wx:item="{{item}}" wx:key="{{index}}">
+            <image mode='aspectFill' bindtap="imgPreview" src="{{'https://www.facecardpro.com' + item}}" data-list="{{faceCard.recommendPic}}" data-src="{{'https://www.facecardpro.com' + item}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-2'>长度</text>
+        <view class='detail'>
+          <text class='ft-1' wx:if="{{faceCard.hairLength=='SHORT'}}">短</text>
+          <text class='ft-1' wx:if="{{faceCard.hairLength=='NORMAL'}}">中</text>
+          <text class='ft-1' wx:if="{{faceCard.hairLength=='LONG'}}">长</text>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-2'>发质</text>
+        <view class='detail'>
+          <text class='ft-1' wx:if="{{faceCard.hairQuality=='SOFT'}}">柔软</text>
+          <text class='ft-1' wx:if="{{faceCard.hairQuality=='NORMAL'}}">普通</text>
+          <text class='ft-1' wx:if="{{faceCard.hairQuality=='HARD'}}">硬</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-2'>发量</text>
+        <view class='detail'>
+          <text class='ft-1' wx:if="{{faceCard.hairQuantity=='LITTLE'}}">少</text>
+          <text class='ft-1' wx:if="{{faceCard.hairQuantity=='NORMAL'}}">普通</text>
+          <text class='ft-1' wx:if="{{faceCard.hairQuantity=='LOT'}}">较多</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-2'>粗细</text>
+        <view class='detail'>
+          <text class='ft-1' wx:if="{{faceCard.hairGranularity=='THIN'}}">细</text>
+          <text class='ft-1' wx:if="{{faceCard.hairGranularity=='NORMAL'}}">普通</text>
+          <text class='ft-1' wx:if="{{faceCard.hairGranularity=='THICK'}}">较硬</text>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='main'>
+        <text class='ft-2'>卷曲</text>
+        <view class='detail'>
+          <text class='ft-1' wx:if="{{faceCard.hairCrispation=='NONE'}}">无</text>
+          <text class='ft-1' wx:if="{{faceCard.hairCrispation=='NORMAL'}}">普通</text>
+          <text class='ft-1' wx:if="{{faceCard.hairCrispation=='LOT'}}">较卷</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view wx:if="{{editFlag}}" class='list-holder edit'>
+    <view class='edit-item'>
+      <checkbox-group bindchange="itTopChange">
+        <label class="lable">
+          <checkbox class='check' color='rgb(0,0,0)' checked='{{faceCard.isTop}}' />同意将我的脸卡纳入推荐
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='list-item edit' style='border-bottom: 1rpx solid rgb(229, 229, 229);'>
+      <text style='color: rgb(153,153,153); font-size: 24rpx;margin-left: 0'>脸型</text>
+    </view>
+    <view class='list-item edit'>
+      <radio-group class="radio-group" bindchange="faceSharpChange">
+        <label class="radio" wx:for="{{faceSharpItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <view class="radio-list">
+            <image class='icon' src="{{item.src}}"></image>
+            <text>{{item.value}}</text>
+            <radio color="#000000" value="{{item.name}}" checked="{{faceCard.face_shape == item.name?'checked':''}}" />
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class='edit-item'>
+      <view class='title'>
+        <text>发质</text>
+      </view>
+      <radio-group class="radio-group" bindchange="hairLengthChange">
+        <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairLength == item.name?'checked':''}}" wx:for="{{hairLengthItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+          <radio hidden="true" value="{{item.name}}" />
+        </label>
+      </radio-group>
+    </view>
+
+    <view class='edit-item'>
+      <view class='title'>
+        <text>发质</text>
+      </view>
+      <radio-group class="radio-group" bindchange="hairQualityChange">
+        <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairQuality == item.name?'checked':''}}" wx:for="{{hairQualityItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+          <radio hidden="true" value="{{item.name}}" />
+        </label>
+      </radio-group>
+    </view>
+
+    <view class='edit-item'>
+      <view class='title'>
+        <text>发量</text>
+      </view>
+      <radio-group class="radio-group" bindchange="hairQuantityChange">
+        <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairQuantity == item.name?'checked':''}}" wx:for="{{hairQuantityItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+          <radio hidden="true" value="{{item.name}}" />
+        </label>
+      </radio-group>
+    </view>
+
+
+    <view class='edit-item'>
+      <view class='title'>
+        <text>粗细</text>
+      </view>
+      <radio-group class="radio-group" bindchange="hairGranularityChange">
+        <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairGranularity == item.name?'checked':''}}" wx:for="{{hairGranularityItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+          <radio hidden="true" value="{{item.name}}" />
+        </label>
+      </radio-group>
+    </view>
+
+    <view class='edit-item'>
+      <view class='title'>
+        <text>卷曲</text>
+      </view>
+      <radio-group class="radio-group" bindchange="hairCrispationChange">
+        <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairCrispation == item.name?'checked':''}}" wx:for="{{hairCrispationItems}}" wx:item="{{item}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+          <radio hidden="true" value="{{item.name}}" />
+        </label>
+      </radio-group>
+    </view>
+
+
+  </view>
+
+
+  <view class='bottom-btn-holder'>
+    <button wx:if="{{!editFlag}}" class='half-btn gray' bindtap='editFaceCard'>编辑</button>
+    <button wx:if="{{!editFlag}}" class='half-btn blue' open-type='share'>生成分享海报</button>
+    <button wx:if="{{editFlag}}" class='whole-btn blue' bindtap='saveFaceCard'>完成</button>
+  </view>
+
+
+</view>
