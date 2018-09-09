@@ -29,7 +29,7 @@ Page({
     faceSharpItems: [
       { name: 'square', value: '正方形', src: 'https://www.facecardpro.com/public/wximg/square.png' },
       { name: 'triangle', value: '三角形', src: 'https://www.facecardpro.com/public/wximg/triangle.png' },
-      { name: 'oval', value: '椭圆', src: 'https://www.facecardpro.com/public/wximg/oval.png' },
+      { name: 'oval', value: '椭圆形', src: 'https://www.facecardpro.com/public/wximg/oval.png' },
       { name: 'heart', value: '心形', src: 'https://www.facecardpro.com/public/wximg/heart.png' },
       { name: 'round', value: '圆形', src: 'https://www.facecardpro.com/public/wximg/round.png' }
     ]
@@ -80,7 +80,6 @@ Page({
         faceCardId: options.faceCardId,
         retryFlag: true
       })
-      console.log(options.faceCardId)
 
       wx.setNavigationBarTitle({
         title: '看看推荐'
@@ -210,6 +209,13 @@ Page({
     
   },
 
+  itTopChange: function (e) {
+    var str = 'faceCard.isTop'
+    this.setData({
+      [str]: (!this.data.faceCard.isTop) ? 1 : 0
+    });
+  },
+
   checkCollectioned: function () {
     var that = this;
     console.log(that.data.refImgList[that.data.index].id)
@@ -307,10 +313,13 @@ Page({
         var recommendPic = 'faceCard.recommendPic'
         var star = 'faceCard.star'
         var facePhoto = 'faceCard.facePhoto'
+        var isTop = 'faceCard.isTop'
+        console.log('sdffsd' + that.data.faceCard.isTop)
         that.setData({
           [facePhoto]: that.data.imgUrl,
           [star]: that.data.refImgList[0] ? that.data.refImgList[that.data.index].id : '',
-          [recommendPic]: resultList
+          [recommendPic]: resultList,
+          [isTop]: that.data.faceCard.isTop == undefined ? 1 : that.data.faceCard.isTop
         })
 
         if (!that.data.faceCardId) {
@@ -369,7 +378,6 @@ Page({
     var that = this;
     var star = 'faceCard.star'
     var id = 'faceCard._id'
-    console.log(that.data.refImgList[that.data.index].id)
     that.setData({
       [star]: that.data.refImgList[0] ? that.data.refImgList[that.data.index].id : '',
       [id]: that.data.faceCardId
@@ -442,6 +450,9 @@ Page({
         util.showError('保存失败')
       }
     })
+  },
+  onUnload: function () {
+    this.updateFaceCard()
   },
 
   onShareAppMessage: function () {

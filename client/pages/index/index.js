@@ -165,7 +165,6 @@ Page({
     }
   },
   fciTouchE: function (e) {
-    console.log("touchE" + e);
     var that = this
     if (e.changedTouches.length == 1) {
       //手指移动结束后触摸点位置的X坐标
@@ -273,7 +272,6 @@ Page({
       url: 'https://www.facecardpro.com/wep/faceCard/getAll',
       method: 'GET',
       success(result) {
-        console.log(result)
         that.setData({
           faceCardList: result.data.list,
           pageInfo: result.data.pageInfo

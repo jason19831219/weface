@@ -144,7 +144,7 @@
 
     <view class='edit-item'>
       <view class='title'>
-        <text>发质</text>
+        <text>长度</text>
       </view>
       <radio-group class="radio-group" bindchange="hairLengthChange">
         <label class="lable {{index==0?'left':''}} {{index==2?'right':''}} {{faceCard.hairLength == item.name?'checked':''}}" wx:for="{{hairLengthItems}}" wx:item="{{item}}" wx:key="{{index}}">

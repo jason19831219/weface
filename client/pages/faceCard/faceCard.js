@@ -15,7 +15,7 @@ Page({
     faceSharpItems: [
       { name: 'square', value: '正方形', src: 'https://www.facecardpro.com/public/wximg/square.png' },
       { name: 'triangle', value: '三角形', src: 'https://www.facecardpro.com/public/wximg/triangle.png' },
-      { name: 'oval', value: '椭圆', src: 'https://www.facecardpro.com/public/wximg/oval.png' },
+      { name: 'oval', value: '椭圆形', src: 'https://www.facecardpro.com/public/wximg/oval.png' },
       { name: 'heart', value: '心形', src: 'https://www.facecardpro.com/public/wximg/heart.png' },
       { name: 'round', value: '圆形', src: 'https://www.facecardpro.com/public/wximg/round.png' }
     ],

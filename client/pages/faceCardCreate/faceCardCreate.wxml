@@ -59,16 +59,11 @@
           <image class='icon' wx:if="{{faceCard.face_shape=='heart'}}" src="https://www.facecardpro.com/public/wximg/heart.png"></image>
           <image class='icon' wx:if="{{faceCard.face_shape=='round'}}" src="https://www.facecardpro.com/public/wximg/round.png"></image>
         </view>
-
-        <!-- <view class='detail' >
-          <view class='right-holder' style='right: 0;'>
-            <text class='up'>{{faceCard.clickNum}} 看过</text>
-            <view class='down'>
-              <image src='https://www.facecardpro.com/public/wximg/location.png'></image>
-              <text>{{faceCard.likeNum}} 收藏</text>
-            </view>
-          </view>
-        </view> -->
+        <checkbox-group bindchange="itTopChange">
+        <label class="lable">
+          <checkbox class='check' color='rgb(0,0,0)' checked='{{faceCard.isTop}}' />纳入推荐
+        </label>
+      </checkbox-group>
       </view>
     </view>
     <view class='item'>

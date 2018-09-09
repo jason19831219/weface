@@ -6,6 +6,12 @@
   background-color: rgba(0, 0, 0, 0);
 }
 
+checkbox-group{
+  position:absolute;
+  right:20rpx;
+  top:0;
+}
+
 .pic-holder{
   position: absolute;
   z-index: 99;
